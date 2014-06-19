@@ -22,7 +22,7 @@ my %WriteMakefileArgs = (
   "LICENSE" => "mozilla",
   "NAME" => "Net::Bugzilla::Kanbanize",
   "PREREQ_PM" => {},
-  "VERSION" => "0.001",
+  "VERSION" => "0.002",
   "test" => {
     "TESTS" => "t/*.t"
   }

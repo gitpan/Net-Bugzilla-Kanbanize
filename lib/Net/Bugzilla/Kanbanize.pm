@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 package Net::Bugzilla::Kanbanize;
-$Net::Bugzilla::Kanbanize::VERSION = '0.001'; # TRIAL
+$Net::Bugzilla::Kanbanize::VERSION = '0.002'; # TRIAL
 #ABSTRACT: turns baubles into trinkets
 
 __END__
@@ -17,7 +17,7 @@ Net::Bugzilla::Kanbanize - turns baubles into trinkets
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 SYNOPSIS
 
