@@ -2,8 +2,10 @@ use strict;
 use warnings;
 
 package Net::Bugzilla::Kanbanize;
-$Net::Bugzilla::Kanbanize::VERSION = '0.002'; # TRIAL
+$Net::Bugzilla::Kanbanize::VERSION = '0.003'; # TRIAL
 #ABSTRACT: turns baubles into trinkets
+
+1;
 
 __END__
 
@@ -17,7 +19,7 @@ Net::Bugzilla::Kanbanize - turns baubles into trinkets
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 SYNOPSIS
 
@@ -32,8 +34,6 @@ This method does something experimental.
 =head2 bar
 
 This method returns a reason.
-
-1;
 
 =head1 AUTHOR
 

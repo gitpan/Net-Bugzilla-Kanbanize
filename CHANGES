@@ -1,0 +1,57 @@
+==================================================
+Changes from 2013-06-19 00:00:00 +0000 to present.
+==================================================
+
+------------------------------------------
+version 0.003 at 2014-06-19 19:08:20 +0000
+------------------------------------------
+
+  Change: 2e241b45af2201ecbc59e0030fdeb0d03656c647
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-19 15:06:18 +0000
+
+    Find bugs just marked with [kanban] 
+
+  Change: 61b14b43d9021b68037480b85a266454878328f2
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-19 15:06:06 +0000
+
+    return true 
+
+------------------------------------------
+version 0.002 at 2014-06-19 18:54:51 +0000
+------------------------------------------
+
+  Change: de735a8e23e36fb6f7f2d4b6076dfe5ae9a4635c
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-19 14:54:51 +0000
+
+    v0.002 
+
+  Change: 6429cb52d9cddd05de096f84d6efa33c4d5c59c9
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-19 14:45:09 +0000
+
+    fixup 
+
+  Change: 4790ce5e3c1c153d24d38e7133f92bfbeb6d1f4c
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-19 14:43:43 +0000
+
+    get ready to release slowly 
+
+  Change: 774a7dc3bbf88258d809d87c8f975543a18a05aa
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-19 12:03:03 +0000
+
+    initial quick dump 
+
+  Change: cffadbf0248788b8bd122c3250c957f35e3bd16b
+  Author: gozer-mozilla <gozer@mozilla.com>
+  Date : 2014-06-18 15:44:30 +0000
+
+    Initial commit 
+
+================
+End of releases.
+================
