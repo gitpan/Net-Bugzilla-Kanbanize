@@ -21,15 +21,45 @@ my %WriteMakefileArgs = (
   ],
   "LICENSE" => "mozilla",
   "NAME" => "Net::Bugzilla::Kanbanize",
-  "PREREQ_PM" => {},
-  "VERSION" => "0.003",
+  "PREREQ_PM" => {
+    "AppConfig" => 0,
+    "Data::Dumper" => 0,
+    "HTTP::Request" => 0,
+    "JSON" => 0,
+    "LWP::Simple" => 0,
+    "LWP::UserAgent" => 0,
+    "List::MoreUtils" => 0,
+    "List::Util" => 0,
+    "URI::Escape" => 0,
+    "strict" => 0,
+    "warnings" => 0
+  },
+  "TEST_REQUIRES" => {
+    "Module::Signature" => 0,
+    "Socket" => 0
+  },
+  "VERSION" => "0.004",
   "test" => {
     "TESTS" => "t/*.t"
   }
 );
 
 
-my %FallbackPrereqs = ();
+my %FallbackPrereqs = (
+  "AppConfig" => 0,
+  "Data::Dumper" => 0,
+  "HTTP::Request" => 0,
+  "JSON" => 0,
+  "LWP::Simple" => 0,
+  "LWP::UserAgent" => 0,
+  "List::MoreUtils" => 0,
+  "List::Util" => 0,
+  "Module::Signature" => 0,
+  "Socket" => 0,
+  "URI::Escape" => 0,
+  "strict" => 0,
+  "warnings" => 0
+);
 
 
 unless ( eval { ExtUtils::MakeMaker->VERSION(6.63_03) } ) {

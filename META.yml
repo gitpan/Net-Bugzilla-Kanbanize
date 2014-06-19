@@ -2,7 +2,9 @@
 abstract: 'turns baubles into trinkets'
 author:
   - 'Philippe M. Chiasson <gozer@cpan.org>'
-build_requires: {}
+build_requires:
+  Module::Signature: 0
+  Socket: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
@@ -12,4 +14,16 @@ meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: Net-Bugzilla-Kanbanize
-version: 0.003
+requires:
+  AppConfig: 0
+  Data::Dumper: 0
+  HTTP::Request: 0
+  JSON: 0
+  LWP::Simple: 0
+  LWP::UserAgent: 0
+  List::MoreUtils: 0
+  List::Util: 0
+  URI::Escape: 0
+  strict: 0
+  warnings: 0
+version: 0.004

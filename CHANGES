@@ -3,8 +3,48 @@ Changes from 2013-06-19 00:00:00 +0000 to present.
 ==================================================
 
 ------------------------------------------
-version 0.003 at 2014-06-19 19:08:20 +0000
+version 0.004 at 2014-06-19 19:43:44 +0000
 ------------------------------------------
+
+  Change: e423aee7128e0c3394bb3f8c4641904eaca2ea6c
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-19 15:43:33 +0000
+
+    use warnings 
+
+  Change: a36af2bc308ba18eac7189d5894fdb1fa457f59a
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-19 15:43:24 +0000
+
+    Add pre-requisites and meta.json 
+
+  Change: 066b1a0a6797543c396c26b119d2752e0f2fb45b
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-19 15:25:56 +0000
+
+    add critic tests 
+
+  Change: 022f04975914e49e5c40cf649cc8af177a2c8f40
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-19 15:23:00 +0000
+
+    dont ship sync.cfg 
+
+  Change: d8c1384af04306eb25b35051289640d6f4f7bbca
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-19 15:12:07 +0000
+
+    Git::NextVersion 
+
+------------------------------------------
+version 0.003 at 2014-06-19 19:08:29 +0000
+------------------------------------------
+
+  Change: 537409bc2beae615b8f193f85388d525de0c0414
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-19 15:08:29 +0000
+
+    v0.003 
 
   Change: 2e241b45af2201ecbc59e0030fdeb0d03656c647
   Author: Philippe M. Chiasson <gozer@mozilla.com>
