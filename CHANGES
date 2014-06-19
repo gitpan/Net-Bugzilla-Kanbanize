@@ -3,8 +3,30 @@ Changes from 2013-06-19 00:00:00 +0000 to present.
 ==================================================
 
 ------------------------------------------
-version 0.004 at 2014-06-19 19:43:44 +0000
+version 0.005 at 2014-06-19 19:55:14 +0000
 ------------------------------------------
+
+  Change: d7a225f81a8cf9da4c9b900cc08db88a3ba48081
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-19 15:54:51 +0000
+
+    automate releases 
+
+  Change: c142bf66c5ddd2615aada3b914d53c898933ea60
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-19 15:53:53 +0000
+
+    Perl::Tidy 
+
+------------------------------------------
+version 0.004 at 2014-06-19 19:43:55 +0000
+------------------------------------------
+
+  Change: eb19278ff5ca9863e3cf03ea74bc098bb8528bd2
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-19 15:43:55 +0000
+
+    v0.004 
 
   Change: e423aee7128e0c3394bb3f8c4641904eaca2ea6c
   Author: Philippe M. Chiasson <gozer@mozilla.com>

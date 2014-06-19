@@ -38,7 +38,7 @@ my %WriteMakefileArgs = (
     "Module::Signature" => 0,
     "Socket" => 0
   },
-  "VERSION" => "0.004",
+  "VERSION" => "0.005",
   "test" => {
     "TESTS" => "t/*.t"
   }
