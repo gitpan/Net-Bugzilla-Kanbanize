@@ -1,0 +1,37 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.73.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 e890c386316ef43fde2f3be1c621a3f7350ee34f LICENSE
+SHA1 dffec7399f448ab62556799c351a248143d054fb MANIFEST
+SHA1 a46570ce68e5f677f8151395659221209201b414 META.yml
+SHA1 d06a79650c270383ed6d90f57961ec752addf72d Makefile.PL
+SHA1 413e0c8e9fbfadcf2dd61668d9634091dae75aeb README
+SHA1 9d228490fb9f6932bf79f60ce5da247d38d21ebd README.md
+SHA1 c0649409857bf96262830ecfc0a2b44493887bdd bin/kanbanize-bugzilla-sync
+SHA1 2c21cc8ffc243d5337b37510f564893daafc1420 dist.ini
+SHA1 7b0fd87af9ce1ea8aafa848c483c233bcdca778d lib/Net/Bugzilla/Kanbanize.pm
+SHA1 987b960f58fea1e023d75020cbef83f81b7fb84c sync-dist.cfg
+SHA1 dfe14f571c8449c265ce640c81fb30e89d994f37 sync.cfg
+SHA1 0e22cbbeb77fd3d5337808854246f1d97b4e4971 t/00-signature.t
+SHA1 5cf386f49901e8ccaad5ab271036754d67114081 t/release-pod-coverage.t
+SHA1 dc3eefcab3399f9a70861c332bb4a81ddcbb45e4 t/release-pod-syntax.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iEYEARECAAYFAlOjMEoACgkQyzKhB4jDpaW7agCgjYSCz7V3bSuW0A+l4WjzD11f
+bw8AnjqGiUj9OKlvnrjL/h4wI3gE2ZvO
+=9ghm
+-----END PGP SIGNATURE-----
