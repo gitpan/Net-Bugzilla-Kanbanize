@@ -4,6 +4,10 @@
 
 use strict;
 use warnings;
+
+use FindBin;
+use lib "$FindBin::Bin/../lib";
+
 use Data::Dumper;
 
 use Net::Bugzilla::Kanbanize;
@@ -30,8 +34,6 @@ my $config = AppConfig->new(
 $config->file("sync.cfg") if -r "sync.cfg";
 $config->args();
 
-print Dumper($config) if $config->verbose;
-
 my $APIKEY = $config->kanbanize_apikey or die "Please configure an apikey";
 my $BOARD_ID = $config->kanbanize_boardid
   or die "Please configure a kanbanize_boardid";
@@ -44,30 +46,33 @@ $ua->timeout(15);
 $ua->env_proxy;
 $ua->default_header( 'apikey' => $APIKEY );
 
-my @bugs;
+my %bugs;
 
 use List::Util qw(shuffle);
 
 if (@ARGV) {
-    @bugs = @ARGV;
+    foreach my $bug (@ARGV) {
+      $bugs{$bug} = get_bug_info($bug);
+    }
 }
 else {
-    @bugs = shuffle get_bugs();
+    %bugs = get_bugs();
 }
 
-my $count = @bugs;
+my $count = scalar keys %bugs;
 
 print STDERR "Found a total of $count bugs\n";
 
 my $total = 0;
-foreach my $bug (@bugs) {
-    sync_bug($bug);
+
+while (my ($bugid, $bug) = each %bugs) {
+  sync_bug($bug);
 }
 
 sub get_bugs {
     my $req =
       HTTP::Request->new( GET =>
-"https://bugzilla.mozilla.org/rest/bug?token=$BUGZILLA_TOKEN&include_fields=id&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&component=WebOps%3A Bugzilla&component=WebOps%3A Community Platform&component=WebOps%3A Engagement&component=WebOps%3A IT-Managed Tools&component=WebOps%3A Labs&component=WebOps%3A Other&component=WebOps%3A Product Delivery&component=WebOps%3A SSL and Domain Names&product=Infrastructure %26 Operations"
+"https://bugzilla.mozilla.org/rest/bug?token=$BUGZILLA_TOKEN&include_fields=id,status,whiteboard,summary,assigned_to&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&component=WebOps%3A Bugzilla&component=WebOps%3A Community Platform&component=WebOps%3A Engagement&component=WebOps%3A IT-Managed Tools&component=WebOps%3A Labs&component=WebOps%3A Other&component=WebOps%3A Product Delivery&component=WebOps%3A SSL and Domain Names&product=Infrastructure %26 Operations"
       );
 
     my $res = $ua->request($req);
@@ -77,18 +82,33 @@ sub get_bugs {
     }
 
     my $data = decode_json( $res->decoded_content );
+    
+    my %bugs;
 
-    my @bugs = map { $_->{id} } @{ $data->{bugs} };
+    foreach my $bug ( @{ $data->{bugs} } ) {
+      $bugs{$bug->{id}} = $bug;
+    }
+    
     my @marked = get_marked_bugs();
+    foreach my $bug ( @marked ) {
+      $bugs{$bug->{id}} = $bug;
+    }    
+    
     my @cards = get_bugs_from_all_cards();
 
-    return uniq @bugs, @marked, @cards;
+    foreach my $bugid ( @cards ) {
+      if (not exists $bugs{$bugid}) {
+	$bugs{$bugid} = get_bug_info($bugid);
+      }
+    }
+
+    return %bugs;
 }
 
 sub get_marked_bugs {
     my $req =
       HTTP::Request->new( GET =>
-"https://bugzilla.mozilla.org/rest/bug?token=$BUGZILLA_TOKEN&include_fields=id&status_whiteboard_type=allwordssubstr&query_format=advanced&status_whiteboard=[kanban]");
+"https://bugzilla.mozilla.org/rest/bug?token=$BUGZILLA_TOKEN&include_fields=id,status,whiteboard,summary,assigned_to&status_whiteboard_type=allwordssubstr&query_format=advanced&status_whiteboard=[kanban]");
 
     my $res = $ua->request($req);
 
@@ -97,8 +117,8 @@ sub get_marked_bugs {
     }
 
     my $data = decode_json( $res->decoded_content );
-
-    my @bugs = map { $_->{id} } @{ $data->{bugs} };
+    
+    my @bugs = @{ $data->{bugs} };
     
     return @bugs; 
 }
@@ -131,17 +151,20 @@ sub get_bugs_from_all_cards {
 }
 
 sub sync_bug {
-    my $bugid = shift;
+    my $bug = shift;
 
-    print STDERR "Bugid: $bugid\n";
+#    print STDERR "Bugid: $bug->{id}\n" if $config->verbose;
 
     $total++;
 
-    my $bug = get_bug_info($bugid);
-
     if ( not defined $bug ) {
-        print STDERR "[$total/$count] No info for bug $bugid\n";
+        print STDERR "[$total/$count] No info for bug $bug->{id}\n";
         return;
+    }
+    
+    if ( $bug->{error} ) {
+        print STDERR "[$total/$count] No info for bug $bug->{id} (Private bug?)\n";
+	return;
     }
 
     my $summary    = $bug->{summary};
@@ -149,24 +172,31 @@ sub sync_bug {
 
     my $card = parse_whiteboard($whiteboard);
 
+    my $status = "";
     if ( not defined $card ) {
         $card = create_card($bug);
 
         if ( not $card ) {
-            warn "Failed to create card for bug $bugid";
+            warn "Failed to create card for bug $bug->{id}";
             return;
         }
 
-        update_whiteboard( $bugid, $card->{taskid}, $whiteboard );
+        update_whiteboard( $bug->{id}, $card->{taskid}, $whiteboard );
+	
+	$status .= "[card created]";
     }
 
     $card = retrieve_card( $card->{taskid} );
 
     my $cardid = $card->{taskid};
-    print STDERR "[$total/$count] Card $cardid - Bug $bugid - $summary\n";
-
-    #sync_bugzilla($bug, $card);
-    sync_card( $card, $bug );
+    
+    if (sync_card( $card, $bug )) {
+      $status .= " [synced]";
+    }
+    
+    if ($status ne "" or $config->verbose) {
+        print STDERR "[$total/$count] Card $cardid - Bug $bug->{id} - $summary $status\n";
+    }
 }
 
 sub retrieve_card {
@@ -194,6 +224,8 @@ sub sync_bugzilla {
 
 sub sync_card {
     my ( $card, $bug ) = @_;
+    
+    my $updated;
 
     # Check Assignee
     my $bug_assigned  = $bug->{assigned_to};
@@ -205,6 +237,7 @@ sub sync_card {
     {
         warn "Update bug assigned to $card_assigned";
         update_bug_assigned( $bug, $card_assigned );
+	$updated++;
     }
     elsif ($bug_assigned !~ m[^$card_assigned@]
         && $bug_assigned !~ m/\@.*\.bugs$/ )
@@ -214,6 +247,7 @@ sub sync_card {
         #print STDERR
         # "bug_asigned: $bug_assigned card_assigned: $card_assigned\n";
         update_card_assigned( $card, $bug_assigned );
+	$updated++;
     }
 
     #Check summary (XXX: Formatting assumption here)
@@ -222,6 +256,7 @@ sub sync_card {
 
     if ( $bug_summary ne $card_summary ) {
         update_card_summary( $card, $bug_summary );
+	$updated++;
     }
 
     # Check status
@@ -230,13 +265,20 @@ sub sync_card {
 
     # Close card on bug completion
 
-    if ( $bug_status eq "RESOLVED" and $card_status ne "Done" ) {
+    if ( ( $bug_status eq "RESOLVED" or $bug_status eq "VERIFIED" ) and $card_status ne "Done" ) {
         complete_card($card);
+	$updated++;
     }
 
     # XXX: Should we close bug on card completion?
-    if ( $bug_status ne "RESOLVED" and $card_status eq "Done" ) {
-        warn "Bug $bug->{id} is not RESOLVED but card says $card_status";
+    if ( ( $bug_status ne "RESOLVED" and $bug_status ne "VERIFIED" ) and $card_status eq "Done" ) {
+        if ($bug_status eq "REOPENED") {
+	  reopen_card($card);
+	  $updated++;
+	}
+	else {
+          warn "Bug $bug->{id} is not RESOLVED ($bug_status) but card $card->{taskid} says $card_status";
+	}
     }
 
     # Check extlink
@@ -244,7 +286,18 @@ sub sync_card {
 
     if ( $card->{extlink} ne $bug_link ) {
         update_card_extlink( $card, $bug_link );
+	$updated++;
     }
+    
+    return $updated;
+}
+
+sub repoen_card {
+  my $card = shift;
+  
+  warn "[notimplemented] Should be reopening card $card->{taskid} and moving back to ready";
+  
+  return;
 }
 
 sub complete_card {
@@ -391,7 +444,7 @@ sub create_card {
     my $bug = shift;
 
     my $data = {
-        'summary' => "$bug->{id} - $bug->{summary}",
+        'title' => "$bug->{id} - $bug->{summary}",
         'extlink' => "https://bugzilla.mozilla.org/show_bug.cgi?id=$bug->{id}",
         'boardid' => $BOARD_ID,
     };
@@ -451,8 +504,10 @@ sub get_bug_info {
       get("https://bugzilla.mozilla.org/rest/bug/$bugid?token=$BUGZILLA_TOKEN");
 
     if ( not $data ) {
-        return;
+        return { id => $bugid, error => "No Data" };
     }
+    
+    print STDERR "Retrieving info for Bug $bugid from bugzilla\n" if $config->verbose;
 
     $data = decode_json($data);
 
@@ -488,7 +543,7 @@ kanbanize-bugzilla-sync
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 AUTHOR
 

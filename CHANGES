@@ -1,9 +1,52 @@
 ==================================================
-Changes from 2013-06-19 00:00:00 +0000 to present.
+Changes from 2013-06-20 00:00:00 +0000 to present.
 ==================================================
 
 ------------------------------------------
-version 0.005 at 2014-06-19 19:55:14 +0000
+version 0.006 at 2014-06-20 17:36:11 +0000
+------------------------------------------
+
+  Change: 28a557c6ccfa8d6fc103117b12ee833e40546443
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-20 13:34:43 +0000
+
+    stub module 
+
+  Change: 0e4b5e44f4e2a2cc6c01acb9356e4479ee0387d7
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-20 13:33:24 +0000
+
+    Handle VERIFIED bugs as RESOLVED Cleaner verbose logging of only
+    changes
+
+    Not implemnted yet: bugs reopened should be moved back to Ready 
+
+  Change: 2b0bb9b398a814f500b7d6aa516429f1d9554585
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-20 12:59:22 +0000
+
+    When creating a card, set the title correctly [bug] 
+
+  Change: 44a846b7d1cebbaaf4cde7979965e598d6dbbee5
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-20 12:58:49 +0000
+
+    batch bug retrieval 
+
+  Change: a91923d50a93e92f018b04a082ae8c744f8cee1b
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-20 12:20:57 +0000
+
+    verbose-- 
+
+  Change: e79af08ca82b734f34fa7f61004f799010d9eadf
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-20 12:18:35 +0000
+
+    Add findbin to find itself 
+
+------------------------------------------
+version 0.005 at 2014-06-19 19:54:51 +0000
 ------------------------------------------
 
   Change: d7a225f81a8cf9da4c9b900cc08db88a3ba48081

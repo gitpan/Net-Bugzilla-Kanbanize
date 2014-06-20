@@ -1,11 +1,8 @@
 use strict;
 use warnings;
 
-package Net::Bugzilla::Kanbanize;
-$Net::Bugzilla::Kanbanize::VERSION = '0.006';    # TRIAL
-
-#ABSTRACT: turns baubles into trinkets
-
+package Net::Bugzilla::Kanbanize::Bug;
+$Net::Bugzilla::Kanbanize::Bug::VERSION = '0.006';    # TRIAL
 1;
 
 __END__
@@ -16,7 +13,7 @@ __END__
 
 =head1 NAME
 
-Net::Bugzilla::Kanbanize - turns baubles into trinkets
+Net::Bugzilla::Kanbanize::Bug
 
 =head1 VERSION
 
@@ -24,17 +21,7 @@ version 0.006
 
 =head1 SYNOPSIS
 
-Kanbanize Bugzilla Sync Tool
-
-=head1 METHODS
-
-=head2 new
-
-This method does something experimental.
-
-=head2 bar
-
-This method returns a reason.
+Kanbanize Bugzilla Bug Abstraction
 
 =head1 AUTHOR
 

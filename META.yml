@@ -17,6 +17,7 @@ name: Net-Bugzilla-Kanbanize
 requires:
   AppConfig: 0
   Data::Dumper: 0
+  FindBin: 0
   HTTP::Request: 0
   JSON: 0
   LWP::Simple: 0
@@ -24,6 +25,7 @@ requires:
   List::MoreUtils: 0
   List::Util: 0
   URI::Escape: 0
+  lib: 0
   strict: 0
   warnings: 0
-version: 0.005
+version: 0.006

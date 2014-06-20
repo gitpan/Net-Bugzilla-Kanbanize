@@ -12,6 +12,7 @@ SIGNATURE
 bin/kanbanize-bugzilla-sync
 dist.ini
 lib/Net/Bugzilla/Kanbanize.pm
+lib/Net/Bugzilla/Kanbanize/Bug.pm
 sync-dist.cfg
 t/00-signature.t
 t/author-critic.t

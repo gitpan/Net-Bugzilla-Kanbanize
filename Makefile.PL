@@ -24,6 +24,7 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "AppConfig" => 0,
     "Data::Dumper" => 0,
+    "FindBin" => 0,
     "HTTP::Request" => 0,
     "JSON" => 0,
     "LWP::Simple" => 0,
@@ -31,6 +32,7 @@ my %WriteMakefileArgs = (
     "List::MoreUtils" => 0,
     "List::Util" => 0,
     "URI::Escape" => 0,
+    "lib" => 0,
     "strict" => 0,
     "warnings" => 0
   },
@@ -38,7 +40,7 @@ my %WriteMakefileArgs = (
     "Module::Signature" => 0,
     "Socket" => 0
   },
-  "VERSION" => "0.005",
+  "VERSION" => "0.006",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -48,6 +50,7 @@ my %WriteMakefileArgs = (
 my %FallbackPrereqs = (
   "AppConfig" => 0,
   "Data::Dumper" => 0,
+  "FindBin" => 0,
   "HTTP::Request" => 0,
   "JSON" => 0,
   "LWP::Simple" => 0,
@@ -57,6 +60,7 @@ my %FallbackPrereqs = (
   "Module::Signature" => 0,
   "Socket" => 0,
   "URI::Escape" => 0,
+  "lib" => 0,
   "strict" => 0,
   "warnings" => 0
 );
