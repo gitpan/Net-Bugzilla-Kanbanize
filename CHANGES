@@ -1,10 +1,86 @@
 ==================================================
-Changes from 2013-06-20 00:00:00 +0000 to present.
+Changes from 2013-06-26 00:00:00 +0000 to present.
 ==================================================
 
 ------------------------------------------
-version 0.006 at 2014-06-20 17:36:11 +0000
+version 0.007 at 2014-06-26 15:24:46 +0000
 ------------------------------------------
+
+  Change: a39309fc25f8e9d302e5e403d3f291a559bf3310
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-26 11:24:42 +0000
+
+    publish to people.m.o also 
+
+  Change: 21cd82d6c488e8d3b45735241f94bb3ed1585174
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-26 11:24:30 +0000
+
+    docs++ 
+
+  Change: e2d3259d083b851f0a9ae0a19bb5dae19b83b1ab
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-25 17:19:22 +0000
+
+    add --version 
+
+  Change: ec3c32082aa0c82bda7f2d52c684601bb6dfefe8
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-25 16:21:04 +0000
+
+    report individual changes 
+
+  Change: ff80462fd6d740c77c90042343ffd567501cc072
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-24 20:13:43 +0000
+
+    report itemize sync changes if verbose 
+
+  Change: 1eab749f616249042d5e3f0755c0ab103f0408de
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-23 12:16:20 +0000
+
+    verbose++ 
+
+  Change: 1c75691f4ddbdf5ee6d990e9eaa0a83aa1543a12
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-23 11:54:27 +0000
+
+    sign git tags 
+
+  Change: 6eb4d22834a24333fa6f1dbc4fd2da19ae3cb01c
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-23 11:39:57 +0000
+
+    ptidy++ 
+
+  Change: 0800aeada25ab88ff1382650c7152edfbc13ede6
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-23 11:37:31 +0000
+
+    strip the script and move logic to a package 
+
+  Change: 33446cd2f10522606421c5288539748c8970861a
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-23 10:50:30 +0000
+
+    fixup++ 
+
+  Change: 38ee78b77b6bf812e62c22e4f226ed1e2c57b683
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-20 13:52:27 +0000
+
+    try and auto-sign git tags 
+
+------------------------------------------
+version 0.006 at 2014-06-20 17:36:24 +0000
+------------------------------------------
+
+  Change: dfb222f4e31d4aafd1f00594b84be0403d6a032f
+  Author: Philippe M. Chiasson <gozer@mozilla.com>
+  Date : 2014-06-20 13:36:24 +0000
+
+    v0.006 
 
   Change: 28a557c6ccfa8d6fc103117b12ee833e40546443
   Author: Philippe M. Chiasson <gozer@mozilla.com>

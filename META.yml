@@ -1,5 +1,5 @@
 ---
-abstract: 'turns baubles into trinkets'
+abstract: 'Bugzilla and Kanbanize sync tool'
 author:
   - 'Philippe M. Chiasson <gozer@cpan.org>'
 build_requires:
@@ -17,15 +17,15 @@ name: Net-Bugzilla-Kanbanize
 requires:
   AppConfig: 0
   Data::Dumper: 0
+  File::HomeDir: 0
   FindBin: 0
   HTTP::Request: 0
   JSON: 0
   LWP::Simple: 0
   LWP::UserAgent: 0
   List::MoreUtils: 0
-  List::Util: 0
   URI::Escape: 0
   lib: 0
   strict: 0
   warnings: 0
-version: 0.006
+version: 0.007
